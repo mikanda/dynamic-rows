@@ -1,0 +1,18 @@
+{
+  "name": "dynamic-rows",
+  "repo": "domachine/dynamic-rows",
+  "description": "Widget to add and remove sub-widgets dynamically.",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "component/reactive": "*",
+    "component/query": "*",
+    "component/emitter": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}
