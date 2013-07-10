@@ -1,6 +1,8 @@
 
 # dynamic-rows
 
+  **Under heavy development**
+
   Widget to add and remove sub-widgets dynamically.
 
 ## Installation
@@ -11,7 +13,18 @@
 
 ## API
 
+### DynamicRows(el : DOMElement, template : DOMElement)
 
+  Initialize the widget.
+
+   * `el` is the container element to use
+   * `template` is the
+     [component/reactive](http://github.com/component/reactive) template
+     used to generate the rows
+
+### DynamicRows#append()
+
+  Append a new sub-widget.
 
 ## License
 
