@@ -31,6 +31,10 @@
 
   Alias for `.append(index)`.  `index` is not optional.
 
+### DynamicRows#remove(index : Number)
+
+  Remove the element at `index`.
+
 ## License
 
   MIT
