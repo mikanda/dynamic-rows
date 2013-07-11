@@ -15,4 +15,4 @@ dynamicRows(query('#rows'), template)
   .append()
   .append()
   .append()
-  .appendAfter(0);
+  .append(0);
