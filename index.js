@@ -82,6 +82,31 @@ View.prototype.appendAfter = function(index){
 };
 
 /**
+ * Remove the element at `index`.
+ *
+ * @param {Number} index
+ */
+
+View.prototype.remove = function(index){
+  var object = this.indices[index];
+
+  // first remove the element from the dom
+
+  dom(object.el).remove();
+
+  // and then remove it from the indices
+
+  this.indices.splice(index, 1);
+
+  // and decrement all following indices
+
+  for (var i = index; i < this.indices.length; ++i) {
+    this.indices[i].dec();
+  }
+  return this;
+};
+
+/**
  * Simplified model which fires change events.
  *
  * @param {DOMElement} el the which is referenced by this index
