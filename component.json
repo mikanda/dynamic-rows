@@ -10,7 +10,9 @@
     "component/query": "*",
     "component/emitter": "*"
   },
-  "development": {},
+  "development": {
+    "component/domify": "*"
+  },
   "license": "MIT",
   "main": "index.js",
   "scripts": [

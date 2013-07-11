@@ -3,9 +3,28 @@
     <title>Dynamic rows example</title>
   </head>
   <body>
-    <div id="rows">
+    <table id="rows">
+    </table>
+    <div style="clear:left;margin-top:10px">
+      <input id="add"
+             style="float:left"
+             type="button"
+             value="Add">
+      <input id="remove"
+             style="float:left"
+             type="button"
+             value="Remove">
+      <div style="float:left;margin-left:5px;margin-top:3px">
+        At index
+      </div>
+      <input style="float:left;margin-left:5px"
+             id="indexValue"
+             type="text"
+             size="5">
     </div>
-    <span>{index}</span>
+
+    <!-- Element used as template to produce subsequent -->
+
     <script src="build/build.js"></script>
     <script src="example.js"></script>
   </body>
