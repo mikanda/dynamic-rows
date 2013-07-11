@@ -14,4 +14,5 @@ template.remove();
 dynamicRows(query('#rows'), template)
   .append()
   .append()
-  .append();
+  .append()
+  .appendAfter(0);
