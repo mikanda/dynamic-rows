@@ -11,7 +11,9 @@
     "component/emitter": "*"
   },
   "development": {
-    "component/domify": "*"
+    "component/domify": "*",
+    "visionmedia/mocha": "*",
+    "chaijs/chai": "*"
   },
   "license": "MIT",
   "main": "index.js",
