@@ -22,4 +22,6 @@ query('#add').onclick = function(){
   rows.append(parseInt(index));
 };
 query('#remove').onclick = function(){
+  var index = parseInt(query('#indexValue').value);
+  rows.remove(index);
 };
