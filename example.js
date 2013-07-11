@@ -5,7 +5,6 @@
 
 var query = require('query')
   , domify = require('domify')
-  , value = require('value')
   , dynamicRows = require('dynamic-rows');
 
 var template = domify([
@@ -20,7 +19,7 @@ var rows = dynamicRows(query('#rows'), template);
 rows.append();
 query('#add').onclick = function(){
   var index = query('#indexValue').value;
-  rows.appendAfter(parseInt(index));
+  rows.append(parseInt(index));
 };
 query('#remove').onclick = function(){
 };
