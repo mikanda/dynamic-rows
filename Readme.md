@@ -25,11 +25,12 @@
 ### DynamicRows#append([index] : Number)
 
   Append a new sub-widget.  If `index` is given append after the
-  element at `index`.
+  element at `index`.  Returns the newly created `DOMElement`.
 
 ### DynamicRows#appendAfter(index : Number)
 
-  Alias for `.append(index)`.  `index` is not optional.
+  Alias for `.append(index)`.  `index` is not optional.  Returns the
+  newly created `DOMElement`.
 
 ### DynamicRows#remove(index : Number)
 

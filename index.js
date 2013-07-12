@@ -48,7 +48,7 @@ View.prototype.append = function(index){
   object = new Index(rowEl, this.indices.length);
   this.indices.push(object);
   this.el.appendChild(rowEl);
-  return this;
+  return rowEl;
 };
 
 /**
@@ -78,7 +78,7 @@ View.prototype.appendAfter = function(index){
     this.indices[i].inc();
   }
   dom(rowEl).insertAfter(refEl);
-  return this;
+  return rowEl;
 };
 
 /**
