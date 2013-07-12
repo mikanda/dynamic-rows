@@ -24,8 +24,8 @@ describe('DynamicRows', function(){
     rows = dynamicRows(root, template);
   });
   describe('#append', function(){
-    it('should append rows', function(){
-      rows.append();
+    it('should append a row', function(){
+      dom(rows.append()).attr('data-index').should.equal('0');
       dom(query('span', root)).attr('data-index').should.equal('0');
     });
     it('should a row after the first', function(){
@@ -34,10 +34,9 @@ describe('DynamicRows', function(){
       rows.template = domify(
 	'<span class="test" data-index="{index}"></span>'
       );
-      rows.append(0);
+      dom(rows.append(0)).attr('data-index').should.equal('1');
       spans = query.all('span', root);
       spans.length.should.equal(3);
-      console.log(spans);
       dom(spans[1]).attr('data-index').should.equal('1');
       dom(spans[1]).attr('class').should.equal('test');
     });
@@ -47,7 +46,6 @@ describe('DynamicRows', function(){
       var spans;
       rows.remove(2);
       spans = query.all('span', root);
-      console.log(spans);
       spans.length.should.equal(2);
       dom(spans[1]).attr('class').should.equal('test');
     });

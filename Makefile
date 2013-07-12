@@ -9,6 +9,6 @@ clean:
 	rm -fr build components
 
 test: build
-	Open test/dynamic-rows.html in your browser
+	# Open test/dynamic-rows.html in your browser
 
 .PHONY: clean test
