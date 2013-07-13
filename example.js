@@ -4,6 +4,7 @@
  */
 
 var query = require('query')
+  , dom = require('dom')
   , domify = require('domify')
   , dynamicRows = require('dynamic-rows');
 
@@ -52,7 +53,7 @@ function initWidget(el) {
 
     // the index needs to be recalculated since it could have been changed
 
-    var index = dom(el).attr('data-index');
+    var index = parseInt(dom(el).attr('data-index'));
 
     // append after the current element
 
@@ -65,7 +66,7 @@ function initWidget(el) {
 
     // the index needs to be recalculated since it could have been changed
 
-    var index = dom(el).attr('data-index');
+    var index = parseInt(dom(el).attr('data-index'));
 
     // remove the current element
 
