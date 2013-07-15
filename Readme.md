@@ -1,8 +1,6 @@
 
 # dynamic-rows
 
-  **Under heavy development**
-
   Widget to add and remove sub-widgets dynamically.
 
 ## Installation
