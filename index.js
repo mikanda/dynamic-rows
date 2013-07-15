@@ -125,7 +125,7 @@ function Index(el, value, model) {
   } else this.model = model;
 
   // bind the element
-  reactive(el, model, this);
+  reactive(el, this.model, this);
 }
 
 /**
