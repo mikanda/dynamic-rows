@@ -26,7 +26,7 @@
   `index` otherwise insert at index 0.  Returns the newly created
   `DOMElement`.  `model` is an optional model to bind with reactive.
 
-### DynamicRows#append([index] : Number, [mode] : Object)
+### DynamicRows#append([index] : Number, [model] : Object)
 
   Append a new sub-widget.  If `index` is given append after the
   element at `index`.  Returns the newly created `DOMElement`.
