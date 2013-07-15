@@ -1,8 +1,8 @@
 {
   "name": "dynamic-rows",
-  "repo": "domachine/dynamic-rows",
+  "repo": "mikanda/dynamic-rows",
   "description": "Widget to add and remove sub-widgets dynamically.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "keywords": [],
   "dependencies": {
     "component/dom": "*",
