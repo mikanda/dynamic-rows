@@ -14,15 +14,14 @@ var reactive = require('reactive')
  * @param {DOMElement} template the row template
  */
 
-module.exports = function(el, template){
-  return new View(el, template);
-};
+module.exports = View;
 
 /**
  * Initialize new view.
  */
 
 function View(el, template) {
+  if (!(this instanceof View)) return new View(el, template);
   this.el = el;
   this.template = template;
   this.indices = [];
