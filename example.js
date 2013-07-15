@@ -6,18 +6,20 @@
 var query = require('query')
   , dom = require('dom')
   , domify = require('domify')
+  , Emitter = require('emitter')
   , dynamicRows = require('dynamic-rows');
 
 var template = domify([
   '<tr data-index="{index}">',
   '  <td>',
   '    <span>At {index}</span>',
-  '    <input type="text">',
+  '    <input type="text" value="{name}">',
   '    <input class="add" type="button" value="+">',
   '    <input class="remove" type="button" value="-">',
   '  </td>',
   '</tr>'
 ].join('\n'));
+var model = new Emitter({ name: 'Test value' });
 var rows = dynamicRows(query('#rows'), template);
 
 /**
@@ -29,7 +31,7 @@ var rows = dynamicRows(query('#rows'), template);
 query('#add').onclick = function(){
   var index = parseInt(query('#indexValue').value)
     , el;
-  el = rows.insert(index);
+  el = rows.insert(index, model);
   initWidget(el);
 };
 
@@ -39,6 +41,11 @@ query('#remove').onclick = function(){
   var index = parseInt(query('#indexValue').value);
   if (Number.isNaN(index)) return;
   rows.remove(index);
+};
+query('#change-value').onclick = function(){
+  var value = query('#new-value').value;
+  model.name = value;
+  model.emit('change name', value);
 };
 
 /**
@@ -57,7 +64,7 @@ function initWidget(el) {
 
     // append after the current element
 
-    initWidget(rows.append(index));
+    initWidget(rows.append(index, model));
   };
 
   // remove button

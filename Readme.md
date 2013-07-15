@@ -20,16 +20,17 @@
      [component/reactive](http://github.com/component/reactive) template
      used to generate the rows
 
-### DynamicRows#insert([index] : Number)
+### DynamicRows#insert([index] : Number, [model] : Object)
 
   Insert a new sub-widget.  If `index` is given replace the element at
   `index` otherwise insert at index 0.  Returns the newly created
-  `DOMElement`.
+  `DOMElement`.  `model` is an optional model to bind with reactive.
 
-### DynamicRows#append([index] : Number)
+### DynamicRows#append([index] : Number, [mode] : Object)
 
   Append a new sub-widget.  If `index` is given append after the
   element at `index`.  Returns the newly created `DOMElement`.
+  `model` is the same as in `.insert()`.
 
 ### DynamicRows#remove(index : Number)
 

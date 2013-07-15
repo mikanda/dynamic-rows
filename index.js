@@ -34,9 +34,9 @@ function View(el, template) {
  * @param {Number} [index]
  */
 
-View.prototype.append = function(index){
-  if (Number.isFinite(index)) return this.insert(index + 1);
-  else return this.insert(this.indices.length);
+View.prototype.append = function(index, model){
+  if (Number.isFinite(index)) return this.insert(index + 1, model);
+  else return this.insert(this.indices.length, model);
 };
 
 /**
@@ -45,7 +45,7 @@ View.prototype.append = function(index){
  * @param {Number} index
  */
 
-View.prototype.insert = function(index){
+View.prototype.insert = function(index, model){
   var object
     , refEl  // the referencing node after which we want to insert
     , rowEl; // the newly created element
@@ -55,7 +55,7 @@ View.prototype.insert = function(index){
   if (!Number.isFinite(index)) index = 0;
   refEl = (this.indices[index] || {}).el;  // the element to insert before
   rowEl = this.template.cloneNode(true);   // the new element to insert
-  object = new Index(rowEl, index);
+  object = new Index(rowEl, index, model);
 
   // insert the new object in the indices
 
@@ -107,17 +107,35 @@ View.prototype.remove = function(index){
  *
  * @param {DOMElement} el the which is referenced by this index
  * @param {Number} value
+ * @param {Emitter} model model used when binding reactive
  */
 
-function Index(el, value) {
+function Index(el, value, model) {
+  if (model == null) {
+    model = {};
+  }
   this.index = value;
   this.el = el;
-  reactive(el, this);
+  if (typeof model.emit !== 'function') {
+
+    // make sure we have an emitter as model
+    this.model = new Emitter({});
+    this.model.__proto__ = model;
+
+    // otherwise use the model directly
+  } else this.model = model;
+
+  // bind the element
+  reactive(el, model, this);
 }
 
-// inherit from event emitter
+/**
+ * Notify reactive about an update.
+ */
 
-Emitter(Index.prototype);
+Index.prototype.notify = function(){
+  this.model.emit('change index', this.index);
+};
 
 /**
  * Set the index.
@@ -125,7 +143,7 @@ Emitter(Index.prototype);
 
 Index.prototype.set = function(value){
   this.index = value;
-  this.emit('change index', this.index);
+  this.notify();
 };
 
 /**
@@ -134,7 +152,7 @@ Index.prototype.set = function(value){
 
 Index.prototype.inc = function(value){
   this.index += value || 1;
-  this.emit('change index', this.index);
+  this.notify();
 };
 
 /**
@@ -143,5 +161,5 @@ Index.prototype.inc = function(value){
 
 Index.prototype.dec = function(value){
   this.index -= value || 1;
-  this.emit('change index', this.index);
+  this.notify();
 };
