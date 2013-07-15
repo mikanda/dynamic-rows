@@ -28,11 +28,11 @@ describe('DynamicRows', function(){
       dom(rows.append()).attr('data-index').should.equal('0');
       dom(query('span', root)).attr('data-index').should.equal('0');
     });
-    it('should a row after the first', function(){
+    it('should append a row after the first', function(){
       var spans;
       rows.append();
       rows.template = domify(
-	'<span class="test" data-index="{index}"></span>'
+	      '<span class="test" data-index="{index}"></span>'
       );
       dom(rows.append(0)).attr('data-index').should.equal('1');
       spans = query.all('span', root);

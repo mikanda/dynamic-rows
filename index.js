@@ -35,49 +35,45 @@ function View(el, template) {
  */
 
 View.prototype.append = function(index){
-  var object
-    , rowEl;
-
-  // if we have an index behave like .appendAfter()
-
-  if (Number.isFinite(index)) return this.appendAfter(index);
-
-  // build the context to feed reactive
-
-  rowEl = this.template.cloneNode(true);
-  object = new Index(rowEl, this.indices.length);
-  this.indices.push(object);
-  this.el.appendChild(rowEl);
-  return rowEl;
+  if (Number.isFinite(index)) return this.insert(index + 1);
+  else return this.insert(this.indices.length);
 };
 
 /**
- * Append a new node after the node at `index`.
+ * Insert a new node at `index`.
  *
- * @param {Number} index the index to append after
+ * @param {Number} index
  */
 
-View.prototype.appendAfter = function(index){
+View.prototype.insert = function(index){
   var object
     , refEl  // the referencing node after which we want to insert
     , rowEl; // the newly created element
 
-  // create context
+  // correct NaN index
 
-  refEl = this.indices[index].el;
-  rowEl = this.template.cloneNode(true);
+  if (!Number.isFinite(index)) index = 0;
+  refEl = (this.indices[index] || {}).el;  // the element to insert before
+  rowEl = this.template.cloneNode(true);   // the new element to insert
   object = new Index(rowEl, index);
 
   // insert the new object in the indices
 
-  this.indices.splice(index + 1, 0, object);
+  this.indices.splice(index, 0, object);
 
   // update the indexes after the element
 
   for (var i = (index + 1); i < this.indices.length; ++i) {
     this.indices[i].inc();
   }
-  dom(rowEl).insertAfter(refEl);
+  if (refEl) this.el.insertBefore(rowEl, refEl);
+  else {
+
+    // append to end if we have an invalid index
+
+    object.set(this.indices.length - 1);
+    dom(this.el).append(rowEl);
+  }
   return rowEl;
 };
 

@@ -29,7 +29,7 @@ var rows = dynamicRows(query('#rows'), template);
 query('#add').onclick = function(){
   var index = parseInt(query('#indexValue').value)
     , el;
-  el = rows.append(index);
+  el = rows.insert(index);
   initWidget(el);
 };
 
