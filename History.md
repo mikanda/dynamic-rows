@@ -1,4 +1,9 @@
 
+1.1.2 / 2013-07-15
+==================
+
+ * Fixed bug which blocked the work with objects instead of models
+
 1.1.1 / 2013-07-15
 ==================
 
