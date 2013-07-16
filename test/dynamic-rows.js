@@ -49,5 +49,9 @@ describe('DynamicRows', function(){
       spans.length.should.equal(2);
       dom(spans[1]).attr('class').should.equal('test');
     });
+    it('should return the stored model', function(){
+      rows.append(null, { name: 'test' });
+      rows.remove(2).name.should.equal('test');
+    });
   });
 });

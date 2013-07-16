@@ -34,7 +34,7 @@
 
 ### DynamicRows#remove(index : Number)
 
-  Remove the element at `index`.
+  Remove the element at `index`.  Returns the model stored at `index`.
 
 ## License
 

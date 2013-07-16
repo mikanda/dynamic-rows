@@ -80,6 +80,7 @@ View.prototype.insert = function(index, model){
  * Remove the element at `index`.
  *
  * @param {Number} index
+ * @return {Emitter} the model stored for `index`
  */
 
 View.prototype.remove = function(index){
@@ -98,7 +99,7 @@ View.prototype.remove = function(index){
   for (var i = index; i < this.indices.length; ++i) {
     this.indices[i].dec();
   }
-  return this;
+  return object.model;
 };
 
 /**
