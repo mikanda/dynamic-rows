@@ -123,7 +123,9 @@ function Index(el, value, model) {
     this.model.__proto__ = model;
 
     // otherwise use the model directly
-  } else this.model = model;
+  } else {
+    this.model = model;
+  }
 
   // bind the element
   reactive(el, this.model, this);
